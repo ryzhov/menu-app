@@ -1,4 +1,4 @@
-import {info, dir} from './logger';
+import {info} from './logger';
 import {menu} from './menu.model'
 import config from './config';
 import './app.less';
