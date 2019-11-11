@@ -14,10 +14,6 @@ export const MenuComponent = {
     `,    
 
     controller: class MenuComponent {
-        $onInit() {
-            this.collapsed = true;
-        }
-
         $onChanges(changes) {
             if (changes.nodes) {
                 this.nodes = [...this.nodes];
