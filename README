@@ -1,8 +1,17 @@
+0) standard installation process for development environment
+git clone git@github.com:ryzhov/menu-app.git && cd menu-app
+npm ci
+npm run start
+And go to http://127.0.0.1:8080, see any debug messages in console when nodes clicked
 
-*) update your registry in .env file, variable REGISTRY
+1) For production test & deploy, update your docker registry in .env file,
+ variable => REGISTRY
 
-1) make prod docker image and push it to repo
+2) make prod docker image and push it to docker image repo
 ./build_prod.sh
 
-2) run image localy, replace "image_name" by your repo image name
+3) run image localy, replace "image_name" by your repo image name
 docker run --rm -d -p 127.0.0.1:8080:80/tcp  "image_name"
+
+4) Go to http://127.0.0.1:8080, that's it! (NOTE: no any debug messages in console for production mode)
+
