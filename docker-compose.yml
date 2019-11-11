@@ -1,0 +1,14 @@
+version:  '3.7'
+
+services:
+  app:
+    container_name: '${APP_NAME}.${APP_ENV}_v${APP_VERSION:-local}'
+    image: '${APP_NAME}.${APP_ENV}:${APP_VERSION:-local}'
+    hostname: '${APP_NAME}'
+    build:
+      context: .
+
+networks:
+  default:
+    driver: bridge
+    name: ${APP_NAME}

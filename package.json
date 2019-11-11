@@ -1,0 +1,50 @@
+{
+    "name": "menu-app",
+    "version": "0.0.1",
+    "description": "test task menu app",
+    "private": true,
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build-dev": "webpack --progress --mode=development",
+        "build": "webpack --progress --mode=production",
+        "start": "webpack-dev-server --progress"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/menu-app.git"
+    },
+    "keywords": [],
+    "author": "anryzhov@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "angular": "^1.7.3",
+        "jquery": "^3.4.1"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.5.5",
+        "@babel/core": "^7.5.5",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "babel-eslint": "^10.0.2",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-angularjs-annotate": "^0.10.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^2.1.1",
+        "eslint": "^5.16.0",
+        "file-loader": "^1.1.11",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "less": "^3.8.1",
+        "less-loader": "^4.1.0",
+        "mini-css-extract-plugin": "^0.7.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-loader": "^2.1.6",
+        "precss": "^3.1.2",
+        "style-loader": "^0.20.3",
+        "url-loader": "^2.1.0",
+        "webpack": "^4.39.1",
+        "webpack-cli": "^3.3.6",
+        "webpack-dev-server": "^3.7.2",
+        "webpack-manifest-plugin": "^2.2.0"
+    }
+}

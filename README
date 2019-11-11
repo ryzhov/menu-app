@@ -1,0 +1,8 @@
+
+*) update your registry in .env file, variable REGISTRY
+
+1) make prod docker image and push it to repo
+./build_prod.sh
+
+2) run image localy, replace "image_name" by your repo image name
+docker run --rm -d -p 127.0.0.1:8080:80/tcp  "image_name"
