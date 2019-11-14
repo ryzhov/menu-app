@@ -40,10 +40,6 @@ const config = {
 
     plugins: [
         new CleanWebpackPlugin(),
-        new webpack.ProvidePlugin({
-            'jQuery': 'jquery',
-            'window.jQuery': 'jquery'
-        }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[hash].css',
         }),
