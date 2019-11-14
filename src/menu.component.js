@@ -1,4 +1,4 @@
-import {info, dir, debug} from './logger';
+import {info, debug} from './logger';
 import './menu.less';
 
 export const MenuComponent = {
@@ -6,7 +6,10 @@ export const MenuComponent = {
         <ul>
             <li ng-repeat="node in $ctrl.nodes">
                 <button type="button" ng-click="$ctrl.onClick(node)">
-                    {{ node.title }} <span ng-if="node.nodes">-></span>
+                    {{ node.title }}
+                </button>
+                <button type="button" ng-if="node.nodes" ng-click="$ctrl.onClickArrow(node)">
+                    ->
                 </button>
                 <menu ng-show="node.collapsed" ng-if="node.nodes" nodes="node.nodes" />
             </li>
@@ -22,7 +25,10 @@ export const MenuComponent = {
         }
 
         onClick(node) {
-            debug(`node => "${node.title}" clicked`);
+            info(`node => "${node.title}" clicked`);
+        }
+
+        onClickArrow(node) {
             node.collapsed = !node.collapsed;
         }
     },
