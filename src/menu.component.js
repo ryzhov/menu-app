@@ -12,7 +12,7 @@ export const MenuComponent = {
                     <path d="M7 9L5 8 3 9V6L1 4h3l1-3 1 3h3L7 6z"/>
                 </svg>
             </button>
-            <menu ng-show="node.collapsed" ng-if="node.nodes" type="toolbar" nodes="node.nodes"
+            <menu ng-show="node.collapsed" ng-if="node.nodes" type="toolbar" nodes="::node.nodes"
                   on-click="$ctrl.onClick({$event})" on-collapse="$ctrl.onCollapse({$event})"/>
         </li>
     `,    
@@ -22,14 +22,7 @@ export const MenuComponent = {
             'ngInject';
             this.$element = $element;
         }
-
-        $onChanges(changes) {
-            if (changes.nodes) {
-                this.nodes = [...this.nodes];
-                debug(`nodes changed => ${JSON.stringify(this.nodes)}`);
-            }
-        }
-
+        
         $postLink() {
             const {$element} = this;
             $element.attr('nodes-count', this.nodes.length);
