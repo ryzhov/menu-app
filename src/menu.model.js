@@ -17,6 +17,9 @@ export const menu = [
             {title: "Four level 1", nodes: [
                 {title: "B1 level 2"},
                 {title: "B2 level 2"},
+                {title: "B3 level 2", nodes: [
+                    {title: "B4 level 3"}
+                ]},
             ]},
         ]
     },
