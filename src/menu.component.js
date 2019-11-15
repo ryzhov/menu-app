@@ -8,7 +8,9 @@ export const MenuComponent = {
                 {{ node.title }}
             </button>
             <button type="button" ng-if="node.nodes" ng-click="$ctrl.onClickArrow(node)">
-                <svg aria-hidden="true" viewBox="0 0 10 10"><path d="M7 9L5 8 3 9V6L1 4h3l1-3 1 3h3L7 6z"/></svg>
+                <svg viewBox="0 0 10 10">
+                    <path d="M7 9L5 8 3 9V6L1 4h3l1-3 1 3h3L7 6z"/>
+                </svg>
             </button>
             <menu ng-show="node.collapsed" ng-if="node.nodes" type="toolbar" nodes="node.nodes" />
         </li>
