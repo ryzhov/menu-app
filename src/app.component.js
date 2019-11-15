@@ -7,7 +7,8 @@ export const AppComponent = {
     template: `
         <div>
             <h2>Hello, Word!</h2>
-            <menu type="toolbar" nodes="$ctrl.nodes" />
+            <menu type="toolbar" nodes="$ctrl.nodes" on-click="$ctrl.onClick($event)"
+                  on-collapse="$ctrl.onCollapse($event)"/>
         </div>
     `,
     controller: class AppComponent {
@@ -24,6 +25,14 @@ export const AppComponent = {
         $postLink() {
             const {$element} = this;
             debug(`AppComponent#postLink:: $element => ${$element}`);
+        }
+
+        onClick({node}) {
+            info(`onClick => "${node.title}"`);
+        }
+
+        onCollapse({node}) {
+            node.collapsed = !node.collapsed;
         }
     },
 };
