@@ -13,5 +13,5 @@ const mainModule = module('main', [])
 ;
 
 element(document).ready(() => {
-    bootstrap(document, [mainModule]);
+    bootstrap(document, [mainModule], {strictDi: true});
 });

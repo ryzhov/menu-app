@@ -15,7 +15,7 @@ export const MenuComponent = {
             <menu ng-show="node.collapsed" ng-if="node.nodes" type="toolbar" nodes="::node.nodes"
                   on-click="$ctrl.onClick({$event})" on-collapse="$ctrl.onCollapse({$event})"/>
         </li>
-    `,    
+    `,
 
     controller: class MenuComponent {
         constructor($element) {
