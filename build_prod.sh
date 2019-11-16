@@ -1,6 +1,8 @@
 #!/bin/bash
 
 . .env
+
+PUSH_TO_REGISTRY=no
 APP_VERSION=`node -pe "require('./package.json').version"`
 BUILDER_IMAGE_NAME=${APP_NAME}.builder:${APP_VERSION:-local}
 
@@ -15,6 +17,8 @@ echo "version => ${APP_VERSION}, production image name => ${PRODUCTION_IMAGE_NAM
 docker build -t ${PRODUCTION_IMAGE_NAME} -f .docker/prod/Dockerfile .
 [ $? != 0 ] && echo "build production image fail, exit." &&  exit 1
 
-echo "push image => ${PRODUCTION_IMAGE_NAME} to registry"
-docker push ${PRODUCTION_IMAGE_NAME}
-[ $? != 0 ] && echo "push production image fail, exit." &&  exit 1
+if [ ${PUSH_TO_REGISTRY} = "yes" ]; then
+    echo "push image => ${PRODUCTION_IMAGE_NAME} to registry"
+    docker push ${PRODUCTION_IMAGE_NAME}
+    [ $? != 0 ] && echo "push production image fail, exit." &&  exit 1
+fi
