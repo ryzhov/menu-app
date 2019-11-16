@@ -5,11 +5,9 @@ import './app.less';
 
 export const AppComponent = {
     template: `
-        <div>
-            <h2>Hello, Word!</h2>
-            <menu type="toolbar" nodes="::$ctrl.nodes" on-click="$ctrl.onClick($event)"
-                  on-collapse="$ctrl.onCollapse($event)"/>
-        </div>
+        <h2>Hello, Word!</h2>
+        <menu type="toolbar" nodes="::$ctrl.nodes" on-click="$ctrl.onClick($event)"
+            on-collapse="$ctrl.onCollapse($event)" />
     `,
     controller: class AppComponent {
         $onInit() {

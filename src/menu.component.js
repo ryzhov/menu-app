@@ -17,7 +17,17 @@ export const MenuComponent = {
         </li>
     `,    
 
-    controller: class MenuComponent { },
+    controller: class MenuComponent {
+        constructor($element) {
+            'ngInject';
+            this.$element = $element
+        }
+
+        $postLink() {
+            const {$element} = this;
+            $element.attr('nodes-count', this.nodes.length);
+        }
+    },
 
     bindings: {
         nodes: '<',
