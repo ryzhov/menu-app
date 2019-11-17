@@ -1,5 +1,4 @@
 import {debug, info, dir} from './logger';
-import {menu} from './menu.model'
 import config from './config';
 import './app.less';
 
@@ -10,9 +9,13 @@ export const AppComponent = {
             on-collapse="$ctrl.onCollapse($event)" />
     `,
     controller: class AppComponent {
+        constructor(menuModel) {
+            'ngInject';
+            this.nodes = menuModel;
+        }
+
         $onInit() {
             info(`app_version => ${config.appVersion} build => ${config.buildHash}`);
-            this.nodes = menu;
         }
 
         onClick({node}) {
