@@ -1,25 +1,27 @@
 
 /* global document */
 
-import {module, element, bootstrap} from 'angular';
+import {NgModule, platformBrowserDynamic} from "angular-ts-decorators";
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu.component';
 import {MenuModelProvider} from './menu.model.provider';
 import {menu} from './menu.model';
-import 'reflect-metadata'; 
+import {dir} from './logger';
 import './index.less';
 
-const mainModule = module('main', [])
-    .component('app', Reflect.getMetadata('custom:options', AppComponent))
-    .component('menu', Reflect.getMetadata('custom:options', MenuComponent))
-    .provider('menuModel', MenuModelProvider)
-    .config((menuModelProvider: MenuModelProvider) => {
+@NgModule({
+    id: 'main',
+    declarations: [AppComponent, MenuComponent],
+    providers: [
+        {provide: 'menuModel', useFactory: () => new MenuModelProvider()}
+    ],
+})
+class MainModule {
+    static config(menuModelProvider: MenuModelProvider) {
         'ngInject';
+        dir({menuModelProvider});
         menuModelProvider.setData(menu);
-    })
-    .name
-;
+    }
+}
 
-element(document).ready(() => {
-    bootstrap(document, [mainModule], {strictDi: true});
-});
+platformBrowserDynamic().bootstrapModule(MainModule, {strictDi: true});

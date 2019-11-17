@@ -5,7 +5,7 @@ export interface MenuNode {
     nodes?: MenuNode[];
 }
 
-@Injectable('menuModel')
+@Injectable()
 export class MenuModelProvider {
     private data: MenuNode[];
 
