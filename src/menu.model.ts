@@ -1,5 +1,6 @@
+import {MenuNode} from './menu.model.provider';
 
-export const menu = [
+export const menu:MenuNode[] = [
     {
         title: "A Root level",
         nodes: [

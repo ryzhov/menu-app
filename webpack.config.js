@@ -15,7 +15,7 @@ const appVersion = require('./package.json').version;
 
 const config = {
     entry: {
-        app: './src/index.js',
+        app: './src/index.ts',
     },
 
     optimization: {
@@ -62,7 +62,7 @@ const config = {
     ],
 
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts'],
     },
 
     output: {

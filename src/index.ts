@@ -6,15 +6,16 @@ import {AppComponent} from './app.component';
 import {MenuComponent} from './menu.component';
 import {MenuModelProvider} from './menu.model.provider';
 import {menu} from './menu.model';
+import 'reflect-metadata'; 
 import './index.less';
 
 const mainModule = module('main', [])
-    .component('app',  AppComponent)
-    .component('menu',  MenuComponent)
+    .component('app', Reflect.getMetadata('custom:options', AppComponent))
+    .component('menu', Reflect.getMetadata('custom:options', MenuComponent))
     .provider('menuModel', MenuModelProvider)
-    .config(menuModelProvider => {
+    .config((menuModelProvider: MenuModelProvider) => {
         'ngInject';
-        menuModelProvider.data = menu;
+        menuModelProvider.setData(menu);
     })
     .name
 ;

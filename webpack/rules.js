@@ -31,6 +31,23 @@ const jsRule = {
     use: ['babel-loader'],
 };
 
+const tsRule = mode => ({
+    test: /\.ts$/,
+    exclude: /node_modules/,
+    use: [
+        {
+            loader: 'ng-annotate-loader',
+            options: {
+                ngAnnotate: 'ng-annotate-patched',
+                sourcemap: 'production' !== mode,
+            },
+        },
+        {
+            loader: 'ts-loader',
+        }
+    ]
+});
+
 const imageRule = {
     test: /\.(png|svg|jpg|gif)$/,
     use: [
@@ -58,4 +75,4 @@ const fontRule = {
     ]
 };
 
-module.exports.getRules = mode => [cssRule(mode), htmlRule, jsRule, imageRule, fontRule];
+module.exports.getRules = mode => [cssRule(mode), htmlRule, jsRule, imageRule, fontRule, tsRule(mode)];
