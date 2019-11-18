@@ -1,4 +1,4 @@
-import {Component} from 'angular-ts-decorators';
+import {Component, OnInit} from 'angular-ts-decorators';
 import {MenuNode} from './menu.model.provider';
 import config from './config';
 import {info} from './logger';
@@ -12,7 +12,7 @@ import './app.less';
             on-collapse="$ctrl.onCollapse($event)" />
     `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     private nodes: MenuNode[];
     
     constructor(menuModel: MenuNode[]) {
@@ -20,7 +20,7 @@ export class AppComponent {
         this.nodes = menuModel;
     }
 
-    $onInit(): void {
+    ngOnInit(): void {
         info(`app_version => ${config.appVersion} build => ${config.buildHash}`);
     }
 
