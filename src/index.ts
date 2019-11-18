@@ -14,10 +14,12 @@ import './index.less';
     ],
 
     config(menuModelProvider: MenuModel): void {
+        'ngInject';
         menuModelProvider.setData(menu);
     },
  
     run(menuModel: MenuNode[]): void {
+        'ngInject';
         log(`run:: menuModel => ${JSON.stringify(menuModel)}`);
     }
 })

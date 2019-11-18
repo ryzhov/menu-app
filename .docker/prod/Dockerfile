@@ -1,5 +1,9 @@
 # ---- BUILD IMAGE ----
 FROM node:alpine AS builder
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache git
+
 RUN mkdir app
 WORKDIR /app
 COPY . .
