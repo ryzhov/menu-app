@@ -1,7 +1,7 @@
-import {info} from './logger';
 import {Component} from 'angular-ts-decorators';
-import config from './config';
 import {MenuNode} from './menu.model.provider';
+import config from './config';
+import {info} from './logger';
 import './app.less';
 
 @Component({

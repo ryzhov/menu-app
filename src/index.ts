@@ -1,27 +1,26 @@
-
-/* global document */
-
 import {NgModule, platformBrowserDynamic} from "angular-ts-decorators";
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu.component';
-import {MenuModelProvider} from './menu.model.provider';
+import {MenuModel, MenuNode} from './menu.model.provider';
 import {menu} from './menu.model';
-import {dir} from './logger';
+import {log} from './logger';
 import './index.less';
 
 @NgModule({
     id: 'main',
     declarations: [AppComponent, MenuComponent],
     providers: [
-        {provide: 'menuModel', useFactory: () => new MenuModelProvider()}
+        MenuModel
     ],
-})
-class MainModule {
-    static config(menuModelProvider: MenuModelProvider) {
-        'ngInject';
-        dir({menuModelProvider});
+
+    config(menuModelProvider: MenuModel): void {
         menuModelProvider.setData(menu);
+    },
+ 
+    run(menuModel: MenuNode[]): void {
+        log(`run:: menuModel => ${JSON.stringify(menuModel)}`);
     }
-}
+})
+class MainModule { }
 
 platformBrowserDynamic().bootstrapModule(MainModule, {strictDi: true});

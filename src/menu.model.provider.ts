@@ -5,8 +5,8 @@ export interface MenuNode {
     nodes?: MenuNode[];
 }
 
-@Injectable()
-export class MenuModelProvider {
+@Injectable('menuModel')
+export class MenuModel implements ng.IServiceProvider {
     private data: MenuNode[];
 
     constructor() {
