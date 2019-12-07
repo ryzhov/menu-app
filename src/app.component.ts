@@ -1,5 +1,6 @@
 import {Component, OnInit} from 'angular-ts-decorators';
 import {MenuNode} from './menu.model.provider';
+import {NodeEvent} from './menu.component';
 import config from './config';
 import {info} from './logger';
 import './app.less';
@@ -24,11 +25,11 @@ export class AppComponent implements OnInit {
         info(`app_version => ${config.appVersion} build => ${config.buildHash}`);
     }
 
-    onClick({title}: MenuNode): void {
-        info('app::onClick =>', title);
+    onClick({node}: NodeEvent): void {
+        info('app::onClick =>', node.title);
     }
 
-    onCollapse(node: MenuNode): void {
+    onCollapse({node}: NodeEvent): void {
         node.collapsed = !node.collapsed;
     }
 }
