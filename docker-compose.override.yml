@@ -3,11 +3,11 @@ version:  '3.7'
 services:
   app:
     build:
+      context: ./.docker/${APP_ENV}
       args:
         user: ${USER_NAME}
         user_id: ${USER_UID}
         app_path: ${APP_PATH}
-      dockerfile: .docker/dev/Dockerfile
     volumes:
       - /home/${USER_NAME}:/home/${USER_NAME}
       - ./:${APP_PATH}

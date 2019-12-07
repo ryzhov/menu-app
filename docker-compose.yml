@@ -5,8 +5,6 @@ services:
     container_name: '${APP_NAME}.${APP_ENV}_v${APP_VERSION:-local}'
     image: '${APP_NAME}.${APP_ENV}:${APP_VERSION:-local}'
     hostname: '${APP_NAME}'
-    build:
-      context: .
 
 networks:
   default:
