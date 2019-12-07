@@ -1,14 +1,11 @@
 import {Component, Input, Output, AfterViewInit} from 'angular-ts-decorators';
 import {IAugmentedJQuery} from 'angular';
 import {MenuNode} from './menu.model.provider';
+import {EventEmitter} from './events';
 import './menu.less';
 
 export interface NodeEvent {
     node: MenuNode
-}
-
-export interface EventEmitter<T> {
-    $event: T
 }
 
 @Component({
