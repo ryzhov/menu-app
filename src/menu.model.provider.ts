@@ -3,6 +3,7 @@ import {Injectable} from "angular-ts-decorators";
 export interface MenuNode {
     title: string;
     nodes?: MenuNode[];
+    collapsed?: boolean;
 }
 
 @Injectable('menuModel')

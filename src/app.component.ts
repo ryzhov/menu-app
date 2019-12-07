@@ -24,11 +24,11 @@ export class AppComponent implements OnInit {
         info(`app_version => ${config.appVersion} build => ${config.buildHash}`);
     }
 
-    onClick({node}): void {
-        info(`onClick => "${node.title}"`);
+    onClick($event: MenuNode): void {
+        info('app::onClick =>', $event.title);
     }
 
-    onCollapse({node}): void {
-        node.collapsed = !node.collapsed;
+    onCollapse($event: MenuNode): void {
+        $event.collapsed = !$event.collapsed;
     }
 }
