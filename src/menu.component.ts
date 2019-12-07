@@ -1,7 +1,6 @@
 import {Component, Input, Output, AfterViewInit} from 'angular-ts-decorators';
 import {IAugmentedJQuery} from 'angular';
 import {MenuNode} from './menu.model.provider';
-import {log} from './logger';
 import './menu.less';
 
 export interface NodeEvent {
