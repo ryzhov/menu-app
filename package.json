@@ -17,7 +17,7 @@
     "author": "anryzhov@gmail.com",
     "license": "MIT",
     "dependencies": {
-        "angular": "^1.7.3",
+        "angular": "^1.7.9",
         "jquery": "^3.4.1"
     },
     "devDependencies": {
