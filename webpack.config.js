@@ -11,6 +11,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const appVersion = require('./package.json').version;
 
 const config = {
@@ -53,6 +54,10 @@ const config = {
             'process.env.APP_VERSION': JSON.stringify(appVersion)
         }),
         new webpack.ExtendedAPIPlugin(),
+        new WorkboxPlugin.InjectManifest({
+            swDest: 'service-worker.js',
+            swSrc: 'src/service-worker.js',
+        }),
         new ManifestPlugin({
             fileName: 'manifest.json',
             seed: {

@@ -4,6 +4,7 @@ import {MenuComponent} from './menu.component';
 import {MenuModel, MenuNode} from './menu.model.provider';
 import {menu} from './menu.model';
 import {log} from './logger';
+import {registerServiceWorker} from './register_service_worker';
 import './index.less';
 
 @NgModule({
@@ -21,6 +22,7 @@ import './index.less';
     run(menuModel: MenuNode[]): void {
         'ngInject';
         log(`run:: menuModel => ${JSON.stringify(menuModel)}`);
+        registerServiceWorker();
     }
 })
 class MainModule { }
