@@ -2,9 +2,10 @@
 
 import config from './config';
 
-export const debug = (({debug}) => (debug ? console.debug.bind(console) : () => undefined))(config);
-export const log = (({debug}) => (debug ? console.log.bind(console) : () => undefined))(config);
+const noop = () => {};
+
+export const debug = config.debug ? console.debug.bind(console) : noop;
+export const log = config.debug ? console.log.bind(console) : noop;
 export const info = console.info.bind(console);
 export const error = console.error.bind(console);
-export const dir = (({debug}) => (debug ? console.dir.bind(console) : () => undefined))(config);
-
+export const dir = config.debug ? console.dir.bind(console) : noop;
