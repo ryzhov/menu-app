@@ -10,6 +10,10 @@ export const registerServiceWorker = () => {
     const { serviceWorker } = navigator;
 
     serviceWorker.register('/service-worker.js').then(registration => {
+        registration.addEventListener('updatefound', event => {
+            info('updatefound event => ', event);
+        });
+
         debug('service worker registration => ', registration);
     }).catch(exception => {
         error('register service worker exception => ', exception);        
