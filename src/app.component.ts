@@ -1,6 +1,6 @@
 import {Component} from 'angular-ts-decorators';
-import {MenuNode} from './menu.model.provider';
-import {NodeEvent} from './menu.component';
+import {MenuNode} from './types/MenuNode';
+import {NodeEvent} from './types/NodeEvent';
 import {info} from './logger';
 import './app.less';
 

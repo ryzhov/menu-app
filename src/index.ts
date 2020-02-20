@@ -1,7 +1,8 @@
 import {NgModule, platformBrowserDynamic} from "angular-ts-decorators";
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu.component';
-import {MenuModel, MenuNode} from './menu.model.provider';
+import {MenuModel} from './menu.model.provider';
+import {MenuNode} from './types/MenuNode';
 import {menu} from './menu.model';
 import {debug, info} from './logger';
 import config from './config';
@@ -21,8 +22,8 @@ import './index.less';
     },
  
     run(menuModel: MenuNode[]): void {
-        const { appVersion, buildHash } = config;
         'ngInject';
+        const { appVersion, buildHash } = config;
         debug('menuModel => ', menuModel);
         info(`Version => ${appVersion}; Build => ${buildHash}`);
         registerServiceWorker();

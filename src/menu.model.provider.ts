@@ -1,10 +1,5 @@
-import {Injectable} from "angular-ts-decorators";
-
-export interface MenuNode {
-    title: string;
-    nodes?: MenuNode[];
-    collapsed?: boolean;
-}
+import {Injectable} from 'angular-ts-decorators';
+import {MenuNode} from './types/MenuNode';
 
 @Injectable('menuModel')
 export class MenuModel implements ng.IServiceProvider {

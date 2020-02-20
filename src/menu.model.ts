@@ -1,4 +1,4 @@
-import {MenuNode} from './menu.model.provider';
+import {MenuNode} from './types/MenuNode';
 
 export const menu:MenuNode[] = [
     {
