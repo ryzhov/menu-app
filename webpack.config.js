@@ -95,7 +95,7 @@ module.exports = (env, argv) => {
         config.devtool = 'source-map';
     }
 
-    config.module.rules = require('./webpack/rules').getRules(mode);
+    config.module.rules = require('./webpack.rules').getRules(mode);
 
     return config;
 };
