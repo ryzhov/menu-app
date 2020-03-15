@@ -4,7 +4,7 @@ const cssRule = mode => ({
     use: [
         {
             loader: 'production' === mode ? require('mini-css-extract-plugin').loader : 'style-loader',
-            options: 'production' === mode ? undefined : {sourceMap: true},
+            options: 'production' === mode ? undefined : {},
         },
         {
             loader: 'css-loader', options: {sourceMap: true} // translates CSS into CommonJS
@@ -48,14 +48,13 @@ const tsRule = mode => ({
     ]
 });
 
-const imageRule = {
-    test: /\.(png|svg|jpg|gif)$/,
+const iconRule = {
+    test: /\.(png|gif)$/,
     use: [
         {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-                name: 'images/[name].[hash].[ext]',
-                limit: 4096,
+                name: 'icons/[name].[ext]',
             }
         }
     ]
@@ -75,4 +74,4 @@ const fontRule = {
     ]
 };
 
-module.exports.getRules = mode => [cssRule(mode), htmlRule, jsRule, imageRule, fontRule, tsRule(mode)];
+module.exports.getRules = mode => [cssRule(mode), htmlRule, jsRule, iconRule, fontRule, tsRule(mode)];

@@ -8,6 +8,7 @@ import {debug, info} from './logger';
 import config from './config';
 import {registerServiceWorker} from './register_service_worker';
 import './index.less';
+import './icons/icon-144x144.png';
 
 @NgModule({
     id: 'main',

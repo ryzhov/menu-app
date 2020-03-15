@@ -13,6 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const appVersion = require('./package.json').version;
+const manifest = require('./manifest.json');
 
 const config = {
     entry: {
@@ -60,9 +61,7 @@ const config = {
         }),
         new ManifestPlugin({
             fileName: 'manifest.json',
-            seed: {
-                name: 'menu-app manifest'
-            }
+            seed: manifest
         })
     ],
 
