@@ -12,7 +12,7 @@ RUN npm run build
 
 # ---- PROD IMAGE ----
 FROM nginx:stable-alpine
-COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY .docker/prod/nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 COPY --from=builder /app/dist .
