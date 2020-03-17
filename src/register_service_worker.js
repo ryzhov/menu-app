@@ -1,4 +1,7 @@
 
+/* global navigator */
+/* global window */
+
 import {info, error, debug} from './logger';
 
 export const registerServiceWorker = () => {
@@ -17,5 +20,13 @@ export const registerServiceWorker = () => {
         debug('service worker registration => ', registration);
     }).catch(exception => {
         error('register service worker exception => ', exception);        
+    });
+
+    window.addEventListener('beforeinstallprompt', event => {
+        debug('beforeinstallprompt => ', event);
+        event.userChoice
+            .then(choiceResult => debug('choiceResult => ', choiceResult))
+            .catch(exception => error(exception))
+        ;
     });
 };
