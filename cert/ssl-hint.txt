@@ -1,0 +1,38 @@
+
+----------------------------------------------------------------------
+-- create self-signed SSL certificate --------------------------------
+----------------------------------------------------------------------
+
+1. generate self signed CA root certificate and private key --->
+openssl req -new -newkey rsa:2048 -nodes -keyout ca-uiptel.key -x509 -days 1095 -subj /C=UA/ST=DN/L=Donetsk/O=UIPTEL/OU=cs/CN=uiptel.com/emailAddress=admin@uiptel.com -out ca-uiptel.crt
+
+2. generate server private key, enter pass here --->
+openssl genrsa -des3 -out server2048.key 2048
+
+3. generate certificate request for server private key, enter pass here --->
+openssl req -new -key server2048.key -out server2048.csr -subj /C=UA/ST=DN/L=Donetsk/O=UIPTEL/OU=cs/CN=localhost/emailAddress=admin@uiptel.com
+
+4. obtaine server certificate signed by CA obtained in first step  --->
+openssl x509 -req -days 365 -in server2048.csr -CA ca-uiptel.crt -CAkey ca-uiptel.key -set_serial 01 -out server.crt -sha256 -extfile v3.ext
+
+5. generate password less version of server key
+openssl rsa -in server2048.key -out server2048.nopass.key
+
+6.(option) show certificate in text format
+openssl x509 -text -in server2048.crt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
