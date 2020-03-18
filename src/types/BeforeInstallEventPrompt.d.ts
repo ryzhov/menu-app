@@ -5,9 +5,9 @@
  * @deprecated Only supported on Chrome and Android Webview.
  */
 
-interface UserChoiceValue {
+interface UserChoice {
     outcome: 'accepted' | 'dismissed',
-    platform: string
+    platform?: string
 }
 
 interface BeforeInstallPromptEvent extends Event {
@@ -23,11 +23,11 @@ interface BeforeInstallPromptEvent extends Event {
     /**
      * Returns a Promise that resolves to a DOMString containing either "accepted" or "dismissed".
      */
-    readonly userChoice: Promise<UserChoiceValue>;
+    readonly userChoice: Promise<UserChoice>;
   
     /**
      * Allows a developer to show the install prompt at a time of their own choosing.
      * This method returns a Promise.
      */
-    prompt(): Promise<UserChoiceValue>;
+    prompt(): Promise<UserChoice>;
 }

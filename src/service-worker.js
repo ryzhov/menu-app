@@ -17,7 +17,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
     const {request: {method, url}} = event;
-    console.log(`service-worker:: fetch event => ${method} ${url}`);
+    //console.log(`service-worker:: fetch event => ${method} ${url}`);
 });
 
 const {serviceWorker: {state}} = self;

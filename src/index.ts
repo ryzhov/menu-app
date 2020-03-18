@@ -1,6 +1,7 @@
 import {NgModule, platformBrowserDynamic} from "angular-ts-decorators";
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu.component';
+import {InstallFormComponent} from './install-form.component';
 import {MenuModel} from './menu.model.provider';
 import {menu} from './menu.model';
 import {info} from './logger';
@@ -11,7 +12,7 @@ import './icons/icon-144x144.png';
 
 @NgModule({
     id: 'main',
-    declarations: [AppComponent, MenuComponent],
+    declarations: [AppComponent, MenuComponent, InstallFormComponent],
     providers: [
         MenuModel
     ],

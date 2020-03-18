@@ -1,47 +1,29 @@
 import {Component} from 'angular-ts-decorators';
 import {MenuNode} from './types/MenuNode';
 import {NodeEvent} from './types/NodeEvent';
-import {info, error, debug} from './logger';
+import {info, debug} from './logger';
 import './app.less';
 
 @Component({
     selector: 'app',
     template: `
-        <button name="button" ng-show="$ctrl.promptEvent" ng-click="$ctrl.onInstall()">Install application</button>
+        <install-form ng-show="!$ctrl.isInstalled" on-install="$ctrl.onInstall($event)"></install-form>
         <h2>Hello, World!</h2>
         <menu type="toolbar" nodes="::$ctrl.menuModel" on-click="$ctrl.onClick($event)"
-            on-collapse="$ctrl.onCollapse($event)" />
+            on-collapse="$ctrl.onCollapse($event)"></menu>
     `,
 })
 export class AppComponent {
-    private promptEvent: BeforeInstallPromptEvent;
+    private isInstalled: boolean = true;
 
-    constructor(
-        private readonly menuModel: MenuNode[],
-        private readonly $scope: ng.IScope,
-        private readonly $window: ng.IWindowService
-    )
+    constructor(private readonly menuModel: MenuNode[])
     {
         'ngInject';
-        
-        $window.addEventListener('beforeinstallprompt', (event: BeforeInstallPromptEvent) => {
-            info('beforeinstallprompt:: event => ', event);
-            $scope.$apply(() => this.promptEvent = event);
-        });
     }
 
-    onInstall(): void {
-        const { promptEvent, $scope } = this;
-        if (promptEvent) {
-            promptEvent.prompt().then((userChoice: UserChoiceValue) => {
-                const { outcome } = userChoice;
-                if ('accepted' === outcome) {
-                    $scope.$apply(() => this.promptEvent = null);
-                    this.promptEvent = null;
-                }
-                debug('userChoice => ', userChoice);
-            });
-        }
+    onInstall(userChoice: UserChoice): void {
+        this.isInstalled = 'accepted' === userChoice.outcome;
+        debug('app::onInstall => ', userChoice);
     }
 
     onClick({node}: NodeEvent): void {
