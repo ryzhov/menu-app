@@ -2,9 +2,8 @@ import {NgModule, platformBrowserDynamic} from "angular-ts-decorators";
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu.component';
 import {MenuModel} from './menu.model.provider';
-import {MenuNode} from './types/MenuNode';
 import {menu} from './menu.model';
-import {debug, info} from './logger';
+import {info} from './logger';
 import config from './config';
 import {registerServiceWorker} from './register_service_worker';
 import './index.less';
@@ -22,12 +21,11 @@ import './icons/icon-144x144.png';
         menuModelProvider.setData(menu);
     },
  
-    run(menuModel: MenuNode[]): void {
+    run($window: ng.IWindowService): void {
         'ngInject';
         const { appVersion, buildHash } = config;
-        debug('menuModel => ', menuModel);
         info(`Version => ${appVersion}; Build => ${buildHash}`);
-        registerServiceWorker();
+        registerServiceWorker($window);
     }
 })
 class MainModule { }
