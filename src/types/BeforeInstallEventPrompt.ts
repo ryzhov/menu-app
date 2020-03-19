@@ -5,12 +5,14 @@
  * @deprecated Only supported on Chrome and Android Webview.
  */
 
-interface UserChoice {
-    outcome: 'accepted' | 'dismissed',
-    platform?: string
+export type Outcome = 'accepted' | 'dismissed';
+
+export interface UserChoice {
+    outcome: Outcome,
+    platform: string
 }
 
-interface BeforeInstallPromptEvent extends Event {
+export interface BeforeInstallPromptEvent extends Event {
 
     /**
      * Returns an array of DOMString items containing the platforms on which the event was dispatched.
