@@ -1,5 +1,5 @@
 
-import {info, error, debug} from './logger';
+import { info, error, debug } from './logger';
 
 export const registerServiceWorker = ($window: ng.IWindowService): void => {
     const { navigator } = $window;
@@ -20,5 +20,4 @@ export const registerServiceWorker = ($window: ng.IWindowService): void => {
     }).catch(exception => {
         error('register service worker exception => ', exception);
     });
-
-    };
+};

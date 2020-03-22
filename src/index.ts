@@ -1,12 +1,12 @@
-import {NgModule, platformBrowserDynamic} from "angular-ts-decorators";
-import {AppComponent} from './app.component';
-import {MenuComponent} from './menu.component';
-import {InstallFormComponent} from './install-form.component';
-import {MenuModel} from './menu.model.provider';
-import {menu} from './menu.model';
-import {info} from './logger';
+import { NgModule, platformBrowserDynamic } from "angular-ts-decorators";
+import { AppComponent } from './app.component';
+import { MenuComponent } from './menu.component';
+import { InstallFormComponent } from './install-form.component';
+import { MenuModel } from './menu.model.provider';
+import { menu } from './menu.model';
+import { info } from './logger';
 import config from './config';
-import {registerServiceWorker} from './register_service_worker';
+import { registerServiceWorker } from './register_service_worker';
 import './index.less';
 import './icons/icon-144x144.png';
 
