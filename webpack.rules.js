@@ -36,11 +36,7 @@ const tsRule = mode => ({
     exclude: /node_modules/,
     use: [
         {
-            loader: 'ng-annotate-loader',
-            options: {
-                ngAnnotate: 'ng-annotate-patched',
-                sourcemap: 'production' !== mode,
-            },
+            loader: 'babel-loader',
         },
         {
             loader: 'ts-loader',
