@@ -17,6 +17,9 @@
     "author": "anryzhov@gmail.com",
     "license": "MIT",
     "dependencies": {
+        "@types/workbox-expiration": "^4.3.0",
+        "@types/workbox-routing": "^4.3.0",
+        "@types/workbox-strategies": "^4.3.0",
         "angular": "^1.7.9",
         "jquery": "^3.4.1"
     },
