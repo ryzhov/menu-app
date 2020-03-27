@@ -17,9 +17,6 @@
     "author": "anryzhov@gmail.com",
     "license": "MIT",
     "dependencies": {
-        "@types/workbox-expiration": "^4.3.0",
-        "@types/workbox-routing": "^4.3.0",
-        "@types/workbox-strategies": "^4.3.0",
         "angular": "^1.7.9",
         "jquery": "^3.4.1"
     },
@@ -30,6 +27,10 @@
         "@babel/preset-env": "^7.8.7",
         "@types/angular": "^1.6.57",
         "@types/node": "^13.9.1",
+        "@types/workbox-build": "^5.0.0",
+        "@types/workbox-expiration": "^4.3.0",
+        "@types/workbox-routing": "^4.3.0",
+        "@types/workbox-strategies": "^4.3.0",
         "@typescript-eslint/eslint-plugin": "^2.23.0",
         "@typescript-eslint/parser": "^2.23.0",
         "angular-ts-decorators": "github:paladdins/angularjs-ts-decorators",
@@ -58,6 +59,6 @@
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.10.3",
         "webpack-manifest-plugin": "^2.2.0",
-        "workbox-webpack-plugin": "^4.3.1"
+        "workbox-build": "^5.1.2"
     }
 }

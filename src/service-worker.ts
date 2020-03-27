@@ -1,10 +1,10 @@
 import { debug } from './logger';
 import { registerRoute } from 'workbox-routing';
-import { NetworkFirst, StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
+import { NetworkFirst, CacheFirst } from 'workbox-strategies';
 
-registerRoute(/\.(js|json)$/, new NetworkFirst());
-registerRoute(/\.css$/, new StaleWhileRevalidate({ cacheName: 'css-cache' }));
-registerRoute(/\.(?:png|jpg|jpeg|svg|gif)$/, new CacheFirst({ cacheName: 'image-cache' }));
+registerRoute(/[^\/]*\/$/, new NetworkFirst({ cacheName: 'runtime' }));
+registerRoute(/\.(?:html|js|css|json)$/, new NetworkFirst({ cacheName: 'runtime' }));
+registerRoute(/\.(?:png|jpg|jpeg|svg|gif)$/, new CacheFirst({ cacheName: 'media' }));
 
 const sw: ServiceWorkerGlobalScope = self as any;
 
