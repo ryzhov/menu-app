@@ -5,7 +5,7 @@ import {BeforeInstallPromptEvent, UserChoice, Outcome} from './types/BeforeInsta
 import {info, debug} from './logger';
 import './app.less';
 
-type InstallationState = Outcome | 'pending' | 'undefined';
+type InstallationState = Outcome | 'pending' | 'installed';
 
 @Component({
     selector: 'app',
@@ -14,13 +14,16 @@ type InstallationState = Outcome | 'pending' | 'undefined';
                       on-before-install="$ctrl.onBeforeInstall($event)"
                       on-install="$ctrl.onInstall($event)">
         </install-form>
-        <h2>Hello, World!</h2>
+        <h2>
+            Hello, World!
+            <em>[{{ $ctrl.installationState }}]</em>
+        </h2>
         <menu type="toolbar" nodes="::$ctrl.menuModel" on-click="$ctrl.onClick($event)"
             on-collapse="$ctrl.onCollapse($event)"></menu>
     `,
 })
 export class AppComponent {
-    private installationState: InstallationState = 'undefined';
+    private installationState: InstallationState = 'installed';
 
     constructor(private readonly menuModel: MenuNode[])
     {
@@ -32,9 +35,9 @@ export class AppComponent {
         debug('app::onBeforeInstall platforms => ', platforms);
     }
 
-    onInstall({ outcome }: UserChoice): void {
-        this.installationState = outcome;
-        debug(`app::onInstall  outcome => ${outcome}`);
+    onInstall(userChoice: UserChoice): void {
+        this.installationState = userChoice.outcome;
+        debug('app::onInstall  outcome => ', userChoice);
     }
 
     onClick({node}: NodeEvent): void {
