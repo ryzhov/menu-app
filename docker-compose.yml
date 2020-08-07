@@ -1,12 +1,24 @@
 version:  '3.7'
 
 services:
-  app:
-    container_name: '${APP_NAME}.${APP_ENV}_v${APP_VERSION:-local}'
-    image: '${APP_NAME}.${APP_ENV}:${APP_VERSION:-local}'
+  front:
+    container_name: '${APP_NAME}_${APP_ENV}'
+    image: '${APP_NAME}_${APP_ENV}:${APP_VERSION:-local}'
     hostname: '${APP_NAME}'
+    working_dir: ${APP_PATH}
+    command: ["sleep.js"]
+    build:
+      context: .docker/${APP_ENV}
+      args:
+        USER_NAME: ${USER_NAME}
+        USER_ID: ${USER_UID}
+    volumes:
+      - /home/${USER_NAME}:/home/${USER_NAME}
+      - ./:${APP_PATH}
+    ports:
+      - "4200:4200"
 
 networks:
   default:
     driver: bridge
-    name: ${APP_NAME}
+    name: ${BRIDGE}

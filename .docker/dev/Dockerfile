@@ -1,18 +1,12 @@
 # ./docker/php/Dockerfile
 FROM node:buster-slim
 
-ARG user
-ARG user_id
-ARG app_path
+ENV NODE_ENV=development
 
-RUN apt-get update \
-    && apt-get -y install --no-install-recommends \
-       curl procps inetutils-ping net-tools iproute2 git vim sudo apt-utils \
-       bash-completion ssh \
-    && rm -rf /var/lib/apt/lists/*
+ARG USER_NAME
+ARG USER_ID
 
-RUN useradd -g users -G root,www-data,sudo -u ${user_id} ${user} -s /bin/bash
-RUN echo "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-WORKDIR ${app_path}
-CMD ["sleep", "infinity"]
+RUN apt-get update && apt-get install -y \
+    curl procps inetutils-ping net-tools iproute2 git vim vim-tiny sudo
+RUN useradd -g users -G root,www-data,sudo -u ${USER_ID} ${USER_NAME} -s /bin/bash && \
+    echo "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
