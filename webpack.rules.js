@@ -31,6 +31,12 @@ const jsRule = {
     use: ['babel-loader'],
 };
 
+const sourceJsRule = {
+    test: /\.js$/,
+    enforce: 'pre',
+    use: ['source-map-loader'],
+};
+
 const tsRule = mode => ({
     test: /\.ts$/,
     exclude: /node_modules/,
@@ -70,4 +76,12 @@ const fontRule = {
     ]
 };
 
-module.exports.getRules = mode => [cssRule(mode), htmlRule, jsRule, iconRule, fontRule, tsRule(mode)];
+module.exports.getRules = mode => [
+    cssRule(mode),
+    htmlRule,
+    sourceJsRule,
+    jsRule,
+    iconRule,
+    fontRule,
+    tsRule(mode)
+];
