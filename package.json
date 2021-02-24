@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build-dev": "webpack --progress --mode=development",
         "build": "webpack --progress --mode=production",
-        "start": "webpack-dev-server --progress"
+        "start": "webpack-dev-server --progress",
+        "start:http": "http-server dist -p 4200"
     },
     "repository": {
         "type": "git",
@@ -43,6 +44,7 @@
         "file-loader": "^6.0.0",
         "html-loader": "^1.1.0",
         "html-webpack-plugin": "^4.3.0",
+        "http-server": "^0.12.3",
         "less": "^3.12.2",
         "less-loader": "^6.2.0",
         "mini-css-extract-plugin": "^0.9.0",
